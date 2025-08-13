@@ -1,5 +1,5 @@
 let currentColor = document.querySelector("#color");
-let gridSize = +document.querySelector("#frame-size").value;
+const gridSize = document.querySelector("#frame-size");
 const frameContainer = document.querySelector("#frame-container");
 const eraseButton = document.querySelector("#erase-button");
 const resetButton = document.querySelector("#reset-button");
@@ -27,7 +27,19 @@ function createGrid(frame, gridSize) {
     }
 }
 
-createGrid(frameContainer, gridSize);
+function resetGrid(frame, gridSize) {
+    frame.innerHTML = "";
+    createGrid(frame, gridSize);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    createGrid(frameContainer, gridSize.value);
+});
+
+gridSize.addEventListener("change", () => {
+    // alert(gridSize.value);
+    resetGrid(frameContainer, gridSize.value);
+});
 
 // Painting/Erasing/Reset events
 let painting = false;
@@ -66,6 +78,5 @@ eraseButton.addEventListener("click", () => {
 });
 
 resetButton.addEventListener("click", () => {
-    frameContainer.innerHTML = "";
-    createGrid(frameContainer, gridSize);
+    resetGrid(frameContainer, gridSize.value);
 });
