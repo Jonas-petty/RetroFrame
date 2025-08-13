@@ -1,6 +1,7 @@
 let currentColor = document.querySelector("#color");
 let gridSize = +document.querySelector("#frame-size").value;
 const frameContainer = document.querySelector("#frame-container");
+let painting = false;
 
 function createCell(id, className, width, height) {
     const cell = document.createElement("div");
@@ -9,9 +10,6 @@ function createCell(id, className, width, height) {
     cell.style["width"] = `${width}%`;
     cell.style["height"] = `${height}%`;
 
-    cell.addEventListener("click", (event) => {
-        event.target.style["background-color"] = currentColor.value;
-    });
     return cell;
 }
 
@@ -29,3 +27,22 @@ function createGrid(frame, gridSize) {
 }
 
 createGrid(frameContainer, gridSize);
+
+function paintCell(target, color) {
+    if (target && target.classList.contains("cell")) {
+        target.style["background-color"] = color;
+    }
+}
+
+frameContainer.addEventListener("pointerdown", (event) => {
+    if (event.button == 0 || event.pointerType == "touch") {
+        painting = !painting;
+        frameContainer.setPointerCapture?.(event.pointerId);
+        paintCell(event.target, currentColor.value);
+        event.preventDefault();
+    }
+});
+
+frameContainer.addEventListener("pointermove", (event) => {
+    if (painting) paintCell(event.target, currentColor.value);
+});
