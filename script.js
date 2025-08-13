@@ -1,6 +1,8 @@
 let currentColor = document.querySelector("#color");
-let gridSize = +document.querySelector("#frame-size").value;
+let gridSize = +document.querySelector("#frame-size").value;    
 const frameContainer = document.querySelector("#frame-container");
+const eraseButton = document.querySelector("#erase-button");
+const resetButton = document.querySelector("#reset-button");
 
 function createCell(id, className, width, height) {
     const cell = document.createElement("div");
@@ -27,15 +29,20 @@ function createGrid(frame, gridSize) {
 
 createGrid(frameContainer, gridSize);
 
-// Painting events
+// Painting/Erasing events
 let painting = false;
+let erase = false;
+
 function paintCell(target, color) {
     if (target && target.classList.contains("cell")) {
-        target.style["background-color"] = color;
+        target.style["background-color"] = erase ? "" : color;
     }
 }
 
 frameContainer.addEventListener("pointerdown", (event) => {
+    if (event.shiftKey) {
+        erase = true;
+    }
     painting = true;
     paintCell(event.target, currentColor.value);
     event.preventDefault();
@@ -47,8 +54,13 @@ frameContainer.addEventListener("pointermove", (event) => {
 
 frameContainer.addEventListener("pointerup", () => {
     painting = false;
+    erase = false;
 });
 
 frameContainer.addEventListener("pointercancel", () => {
     painting = false;
+});
+
+eraseButton.addEventListener("click", () => {
+    erase = !erase;
 });
