@@ -1,5 +1,5 @@
 let currentColor = document.querySelector("#color");
-let gridSize = +document.querySelector("#frame-size").value;    
+let gridSize = +document.querySelector("#frame-size").value;
 const frameContainer = document.querySelector("#frame-container");
 const eraseButton = document.querySelector("#erase-button");
 const resetButton = document.querySelector("#reset-button");
@@ -29,7 +29,7 @@ function createGrid(frame, gridSize) {
 
 createGrid(frameContainer, gridSize);
 
-// Painting/Erasing events
+// Painting/Erasing/Reset events
 let painting = false;
 let erase = false;
 
@@ -63,4 +63,9 @@ frameContainer.addEventListener("pointercancel", () => {
 
 eraseButton.addEventListener("click", () => {
     erase = !erase;
+});
+
+resetButton.addEventListener("click", () => {
+    frameContainer.innerHTML = "";
+    createGrid(frameContainer, gridSize);
 });
