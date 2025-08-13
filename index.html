@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>RetroFrame</title>
-</head>
-<body>
-    
-</body>
-<script src="script.js"></script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>RetroFrame</title>
+    </head>
+    <body>
+        <main>
+            <aside id="tools">
+                <div id="tools-container">
+                    <label for="color">Color</label>
+                    <input type="color" name="color" id="color" required />
+
+                    <label for="toggle-grid">Toggle Grid</label>
+                    <input
+                        type="checkbox"
+                        name="toggle-grid"
+                        id="toggle-grid"
+                    />
+
+                    <label for="frame-size">Frame size</label>
+                    <input
+                        type="number"
+                        name="frame-size"
+                        id="frame-size"
+                        max="100"
+                    />
+
+                    <button id="download-png" type="button">
+                        Download PNG
+                    </button>
+                </div>
+            </aside>
+            <section id="frame">
+                <div id="frame-container"></div>
+            </section>
+        </main>
+        <footer>Desenvolvido por Jonas Felix</footer>
+    </body>
+    <script src="script.js"></script>
 </html>
