@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#frame {
+    border: 1px solid red;
+
+    width: 50rem;
+    height: 50rem;
+    margin: auto;
+}
+
+#frame-container {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    border: 1px solid lightgray;
+}
+
+.cell:hover {
+    background-color: yellow;
+}
