@@ -1,4 +1,4 @@
-let currentColor = document.querySelector("#color").value;
+let currentColor = document.querySelector("#color");
 let gridSize = +document.querySelector("#frame-size").value;
 const frameContainer = document.querySelector("#frame-container");
 
@@ -10,7 +10,7 @@ function createCell(id, className, width, height) {
     cell.style["height"] = `${height}%`;
 
     cell.addEventListener("click", (event) => {
-        event.target.style["background-color"] = currentColor;
+        event.target.style["background-color"] = currentColor.value;
     });
     return cell;
 }
