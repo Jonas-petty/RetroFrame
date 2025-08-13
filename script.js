@@ -1,7 +1,6 @@
 let currentColor = document.querySelector("#color");
 let gridSize = +document.querySelector("#frame-size").value;
 const frameContainer = document.querySelector("#frame-container");
-let painting = false;
 
 function createCell(id, className, width, height) {
     const cell = document.createElement("div");
@@ -28,6 +27,8 @@ function createGrid(frame, gridSize) {
 
 createGrid(frameContainer, gridSize);
 
+// Painting events
+let painting = false;
 function paintCell(target, color) {
     if (target && target.classList.contains("cell")) {
         target.style["background-color"] = color;
@@ -35,14 +36,19 @@ function paintCell(target, color) {
 }
 
 frameContainer.addEventListener("pointerdown", (event) => {
-    if (event.button == 0 || event.pointerType == "touch") {
-        painting = !painting;
-        frameContainer.setPointerCapture?.(event.pointerId);
-        paintCell(event.target, currentColor.value);
-        event.preventDefault();
-    }
+    painting = true;
+    paintCell(event.target, currentColor.value);
+    event.preventDefault();
 });
 
 frameContainer.addEventListener("pointermove", (event) => {
     if (painting) paintCell(event.target, currentColor.value);
+});
+
+frameContainer.addEventListener("pointerup", () => {
+    painting = false;
+});
+
+frameContainer.addEventListener("pointercancel", () => {
+    painting = false;
 });
