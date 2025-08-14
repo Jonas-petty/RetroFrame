@@ -1,8 +1,13 @@
 let currentColor = document.querySelector("#color");
 const gridSize = document.querySelector("#frame-size");
 const frameContainer = document.querySelector("#frame-container");
+const toggleGridButton = document.querySelector("#toggle-grid");
 const eraseButton = document.querySelector("#erase-button");
 const resetButton = document.querySelector("#reset-button");
+
+let gridIsActive = true;
+let painting = false;
+let erase = false;
 
 function createCell(id, className, width, height) {
     const cell = document.createElement("div");
@@ -32,25 +37,45 @@ function resetGrid(frame, gridSize) {
     createGrid(frame, gridSize);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    createGrid(frameContainer, gridSize.value);
-});
-
-gridSize.addEventListener("change", () => {
-    // alert(gridSize.value);
-    resetGrid(frameContainer, gridSize.value);
-});
-
-// Painting/Erasing/Reset events
-let painting = false;
-let erase = false;
-
 function paintCell(target, color) {
     if (target && target.classList.contains("cell")) {
         target.style["background-color"] = erase ? "" : color;
     }
 }
 
+function setGridBorder(grid, gridIsActive) {
+    const cells = grid.childNodes;
+    cells.forEach((cell) => {
+        if (gridIsActive) {
+            cell.classList.add("grid-active");
+        } else {
+            cell.classList.remove("grid-active");
+        }
+    });
+}
+
+function startProject(frame, gridSize) {
+    createGrid(frame, gridSize);
+    setGridBorder(frame, gridIsActive);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    startProject(frameContainer, gridSize.value);
+});
+
+toggleGridButton.addEventListener("click", () => {
+    gridIsActive = !gridIsActive;
+    toggleGridButton.textContent = gridIsActive
+        ? "Grid Active"
+        : "Grid Inactive";
+    setGridBorder(frameContainer, gridIsActive);
+});
+
+gridSize.addEventListener("change", () => {
+    resetGrid(frameContainer, gridSize.value);
+});
+
+// Painting/Erasing/Reset events
 frameContainer.addEventListener("pointerdown", (event) => {
     if (event.shiftKey) {
         erase = true;
