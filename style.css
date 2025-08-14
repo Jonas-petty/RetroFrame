@@ -22,6 +22,7 @@ body {
 #container {
     background-color: var(--wall-color);
     height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
 }
@@ -41,7 +42,7 @@ main {
 #tools-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -68,8 +69,8 @@ main {
 .tool > input[type="number"] {
     font-size: 1rem;
     border: 1px solid lightgray;
-    border-radius: .5rem;
-    padding: .5rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
 }
 
 #frame {
@@ -102,6 +103,15 @@ footer {
     text-align: center;
 }
 
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #frame {
+        width: 50rem;
+        height: 50rem;
+    }
+}
+
+/* Mobile */
 @media (max-width: 767.98px) {
     #frame {
         width: 30rem;
