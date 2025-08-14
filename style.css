@@ -65,6 +65,13 @@ main {
     transform: scale(1.1);
 }
 
+.tool > input[type="number"] {
+    font-size: 1rem;
+    border: 1px solid lightgray;
+    border-radius: .5rem;
+    padding: .5rem;
+}
+
 #frame {
     flex-direction: 1;
     width: 60rem;
