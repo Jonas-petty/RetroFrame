@@ -4,13 +4,38 @@
     box-sizing: border-box;
 }
 
+:root {
+
+}
+
+#container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+#tools {
+    padding: 1rem;
+    max-width: 50rem;
+    margin: auto;
+}
+
+#tools-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 #frame {
     border: 1px solid red;
 
-    width: 50rem;
+    max-width: 50rem;
     height: 50rem;
     margin: auto;
-    
 }
 
 #frame-container {
@@ -26,6 +51,10 @@
 
 .cell:hover {
     border: 1px solid blue;
+}
+
+footer {
+    text-align: center;
 }
 
 @media (max-width: 767.98px) {

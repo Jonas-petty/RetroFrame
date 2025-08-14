@@ -7,37 +7,35 @@
         <title>RetroFrame</title>
     </head>
     <body>
-        <main>
-            <aside id="tools">
-                <div id="tools-container">
-                    <label for="color">Color</label>
-                    <input type="color" name="color" id="color" required />
-
-                    <label for="toggle-grid">Toggle Grid</label>
-                    <button type="button" id="toggle-grid">Grid </button>
-
-                    <label for="frame-size">Frame size</label>
-                    <input
-                        type="number"
-                        name="frame-size"
-                        id="frame-size"
-                        max="100"
-                        value="16"
-                    />
-
-                    <button id="erase-button" type="button">Erase</button>
-                    <button id="reset-button" type="button">Reset</button>
-
-                    <button id="download-png" type="button">
-                        Download PNG
-                    </button>
-                </div>
-            </aside>
-            <section id="frame">
-                <div id="frame-container"></div>
-            </section>
-        </main>
-        <footer>Desenvolvido por Jonas Felix</footer>
+        <div id="container">
+            <main>
+                <aside id="tools">
+                    <div id="tools-container">
+                        <label for="color">Color</label>
+                        <input type="color" name="color" id="color" required />
+                        <label for="toggle-grid">Toggle Grid</label>
+                        <button type="button" id="toggle-grid">Grid</button>
+                        <label for="frame-size">Frame size</label>
+                        <input
+                            type="number"
+                            name="frame-size"
+                            id="frame-size"
+                            max="100"
+                            value="16"
+                        />
+                        <button id="erase-button" type="button">Erase</button>
+                        <button id="reset-button" type="button">Reset</button>
+                        <button id="download-png" type="button">
+                            Download PNG
+                        </button>
+                    </div>
+                </aside>
+                <section id="frame">
+                    <div id="frame-container"></div>
+                </section>
+            </main>
+            <footer>Desenvolvido por Jonas Felix</footer>
+        </div>
     </body>
     <script src="script.js"></script>
 </html>
