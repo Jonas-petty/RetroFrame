@@ -8,24 +8,45 @@
     </head>
     <body>
         <div id="container">
+            <header>
+                <h1>RetroFrame</h1>
+            </header>
             <main>
                 <aside id="tools">
                     <div id="tools-container">
-                        <label for="color">Color</label>
-                        <input type="color" name="color" id="color" required />
-                        <label for="toggle-grid">Toggle Grid</label>
-                        <button type="button" id="toggle-grid">Grid</button>
-                        <label for="frame-size">Frame size</label>
-                        <input
-                            type="number"
-                            name="frame-size"
-                            id="frame-size"
-                            max="100"
-                            value="16"
-                        />
-                        <button id="erase-button" type="button">Erase</button>
-                        <button id="reset-button" type="button">Reset</button>
-                        <button id="download-png" type="button">
+                        <div class="tool">
+                            <label for="color">Color</label>
+                            <input
+                                type="color"
+                                name="color"
+                                id="color"
+                                required
+                            />
+                        </div>
+
+                        <div class="tool">
+                            <label for="toggle-grid">Toggle Grid</label>
+                            <button type="button" id="toggle-grid">Grid</button>
+                        </div>
+
+                        <div class="tool">
+                            <label for="frame-size">Frame size</label>
+                            <input
+                                type="number"
+                                name="frame-size"
+                                id="frame-size"
+                                max="100"
+                                value="16"
+                            />
+                        </div>
+
+                        <button id="erase-button" class="tool" type="button">
+                            Erase
+                        </button>
+                        <button id="reset-button" class="tool" type="button">
+                            Reset
+                        </button>
+                        <button id="download-png" class="tool" type="button">
                             Download PNG
                         </button>
                     </div>
