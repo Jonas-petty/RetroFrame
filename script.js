@@ -46,8 +46,8 @@ function paintCell(target, color) {
 
 function setGridBorder(grid, gridIsActive) {
     toggleGridButton.textContent = gridIsActive
-        ? "Grid Active"
-        : "Grid Inactive";
+        ? "Grid is Active"
+        : "Grid is Inactive";
     const cells = grid.childNodes;
     cells.forEach((cell) => {
         if (gridIsActive) {
