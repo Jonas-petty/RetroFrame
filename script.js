@@ -35,6 +35,7 @@ function createGrid(frame, gridSize) {
 function resetGrid(frame, gridSize) {
     frame.innerHTML = "";
     createGrid(frame, gridSize);
+    setGridBorder(frame, gridIsActive);
 }
 
 function paintCell(target, color) {
@@ -44,6 +45,9 @@ function paintCell(target, color) {
 }
 
 function setGridBorder(grid, gridIsActive) {
+    toggleGridButton.textContent = gridIsActive
+        ? "Grid Active"
+        : "Grid Inactive";
     const cells = grid.childNodes;
     cells.forEach((cell) => {
         if (gridIsActive) {
@@ -65,9 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 toggleGridButton.addEventListener("click", () => {
     gridIsActive = !gridIsActive;
-    toggleGridButton.textContent = gridIsActive
-        ? "Grid Active"
-        : "Grid Inactive";
     setGridBorder(frameContainer, gridIsActive);
 });
 
@@ -75,7 +76,6 @@ gridSize.addEventListener("change", () => {
     resetGrid(frameContainer, gridSize.value);
 });
 
-// Painting/Erasing/Reset events
 frameContainer.addEventListener("pointerdown", (event) => {
     if (event.shiftKey) {
         erase = true;
