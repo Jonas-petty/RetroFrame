@@ -1,9 +1,12 @@
+import html2canvas from "./node_modules/html2canvas/dist/html2canvas.esm.js";
+
 let currentColor = document.querySelector("#color");
 const gridSize = document.querySelector("#frame-size");
 const frameContainer = document.querySelector("#frame-container");
 const toggleGridButton = document.querySelector("#toggle-grid");
 const eraseButton = document.querySelector("#erase-button");
 const resetButton = document.querySelector("#reset-button");
+const downloadButton = document.querySelector("#download-png");
 
 let gridIsActive = true;
 let painting = false;
@@ -22,7 +25,7 @@ function createCell(id, className, width, height) {
 function createGrid(frame, gridSize) {
     if (gridSize <= 100) {
         const numberOfCells = gridSize * gridSize;
-        for (i = 0; i < numberOfCells; i++) {
+        for (let i = 0; i < numberOfCells; i++) {
             const cellSize = 100 / gridSize;
             const cell = createCell(i, "cell", cellSize, cellSize);
             frame.appendChild(cell);
@@ -104,4 +107,17 @@ eraseButton.addEventListener("click", () => {
 
 resetButton.addEventListener("click", () => {
     resetGrid(frameContainer, gridSize.value);
+});
+
+downloadButton.addEventListener("click", () => {
+    html2canvas(frameContainer, { backgroundColor: null }).then((canvas) => {
+        let downloadDataURL = canvas.toDataURL("image/png");
+
+        const link = document.createElement("a");
+        link.href = downloadDataURL;
+        console.log("clicou");
+        link.download = "output.png";
+        link.click();
+        link.remove();
+    });
 });
