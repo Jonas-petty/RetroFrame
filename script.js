@@ -1,5 +1,3 @@
-import html2canvas from "./node_modules/html2canvas/dist/html2canvas.esm.js";
-
 let currentColor = document.querySelector("#color");
 const gridSize = document.querySelector("#frame-size");
 const frameContainer = document.querySelector("#frame-container");
